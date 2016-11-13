@@ -1,0 +1,12 @@
+{
+  "type": "service_account",
+  "project_id": "smartdoor-2f29b",
+  "private_key_id": "fbe1a59a49156b0a0eca74858606218dbd0bffdd",
+  "private_key": "-----BEGIN PRIVATE KEY-----\nMIIEvwIBADANBgkqhkiG9w0BAQEFAASCBKkwggSlAgEAAoIBAQC6YP+8zREldeor\nkdOELcznjLTEZxkF4vBjvX5HWnpJZUqCjClX5blNoE3JrFScXcgLjs9nf2aPV6ra\nU61FAyDo4WvdloNpjT+4Np50Fi0iAj589swQ2EOqQTDrjVmwJsGTwiEYPXVVaz+g\n3iCzk63ztCKXgGIJa6yPWgi8DD+Rl/n8cuPyCsR5KcQ31DcDwj6dpUzqS5uZTB04\nLjIICDOwJKatCusg0XKsGUvozDn36XkRmrVW/WBPwZ8rL2Z1jOaOtMwXKpTZAVTC\ny/8n7zFhpd5UQuZy1irzgbvFknmTYQwN97hzZ+d/hKAjTJemOi5NGVUlSz9A5nQ1\nuN4rJcOjAgMBAAECggEBAI99jma1GrZUiezxYH8rI85BLgrntQQrLBgeE9Krfepz\n6WGIt2vMmVWCTWEvJBUevpznXha4pyVEwW1Fbujq97NTmdAHyTTCYoRYyLVnPWgp\ngiKDf6iYV8AEYL15HcvYisBPfVtENcmFwH8BhPu8fvhZfyhU1yWZmEjlcEQWyfo0\nTGXYCYKVNhiYkmsCyNgEnvImhwfxeuX1518gbXbZcrRopfmVZLAv+pM9+fAFRbdV\n1Jmemm31rVVWpPzu+j5Heo8ZoqvCiakT/hPQWdQPfJejeA9wRha9O4Q/QWEU0jvd\nnyrq7kx9vt1b77R3pELtYaOph2579wUHCntdmjhA14ECgYEA98cwSN13paAfJ1tz\nGjS/yro0cyeEuUoCvLln9anGnZRBv/dX70zqfp19fhyFpg8l2O1SmReJ/FhAdjVK\nkha9fZBIYtD3NYlrNMMkFEC7TQ9KZzblzX4fSqt9n/aENLJoPK7Qrw7cVZTwxjs3\ne7wT8RpZSqt7wxgV6R4AfaOmjEsCgYEAwJA9dENhmPP/9oFuhziOVJmUhej4JUkn\nS4Z8yRjFnf6F23R+rBS9szgB5s+61qf2/gddj9MTTDTbLSno7u4VYfqgmcrSYC99\n5awMgtla2tQAOI0Qrezx4dtX0R8wbcozpl+MOI+hjXntNExNUn6zJMxoOryvboQm\nzJeorlnRXwkCgYBRxgZUderv2XmOpqrFIlWN1YhL3OX7tMZUfKgntoFbLjvI3BvE\nWVEmullZTpZ5KJSoFCLnbZJXmtSjbpEOx7x//Sc2nZqIq7Ka9jApEvf9xacbi02q\nVQ6EuTY7ncMiFSM7q8IplDD5ea9A7PgxuO+n6bdAYnn0+DT6+7DTxjfIIwKBgQCu\nSZ8lvNr4KlhRD8MvZnQEhGEWds8qSDTludr11JMAtl8HS0BflgJA1P97nibYpHv8\nXkRDqeL8hZafISCwKRN3c/WqXRXecv27Q+arA/mkuF9ez+b51Mz1BKdOIrGdnXb0\nLeTnSLELMQEN5cXSVdTlCJGKID+Ugs3vPZEyBR9oqQKBgQDML88W+MSm97HUcI4v\ncFvzGR3tOu39c8h6wrfQXFeDc9DTOuhRPkF95nIFdrmzibeSy9g54uce2vPt+6Nj\n3h0pWYIP6VGM8tmQkgSV0cf2+ICNe/D9FuH70jzgbu47ape+6bkcNT5WZZ79iB97\nnDJWp+tj0J6sqREsN/H1Ho+RPg==\n-----END PRIVATE KEY-----\n",
+  "client_email": "speech@smartdoor-2f29b.iam.gserviceaccount.com",
+  "client_id": "103815646453572025901",
+  "auth_uri": "https://accounts.google.com/o/oauth2/auth",
+  "token_uri": "https://accounts.google.com/o/oauth2/token",
+  "auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs",
+  "client_x509_cert_url": "https://www.googleapis.com/robot/v1/metadata/x509/speech%40smartdoor-2f29b.iam.gserviceaccount.com"
+}

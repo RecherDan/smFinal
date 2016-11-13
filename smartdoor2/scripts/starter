@@ -1,0 +1,4 @@
+node /home/root/smartdoor/scripts/doorCommand.js &
+node /home/root/smartdoor/scripts/DoorStatusAnalog.js &
+node /home/root/smartdoor/scripts/AlarmSound.js &
+node /home/root/smartdoor/scripts/SmokeDetect.js &

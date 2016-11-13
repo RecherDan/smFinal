@@ -1,0 +1,363 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>SmartDoor</title>
+		<link rel="stylesheet" type="text/css" href="/static/css/bootstrap.css" />
+		<link rel="stylesheet" type="text/css" href="/static/css/style.css" />
+
+  		<meta name="viewport" content="width=device-width, initial-scale=1">
+	</head>
+<body>
+
+<div class="navbar navbar-inverse navbar-fixed-top">
+	<div class="container">
+		<div class="navbar-header contentheader">
+
+			<a href="#main" class="navbar-brand changecontent">SmartDoor</a>
+			<a href="#Settings" class="navbar-brand changecontent" id="tosettings">Settings</a>
+			<a href="#Help" class="navbar-brand changecontent" id="tohelp">Help</a>
+		</div>
+	</div>
+
+</div>	
+<br/><br/><br/>
+<div class="container" id="content">
+<div id="jstext"></div>
+<% if ( !isAuthtenticated ) { %>
+<form class="form-horizontal" action="" method="post">
+		<div class="form-group">
+			<label for="InputUser" class="control-label col-xs-2">User</label>
+			<div class="col-xs-6"><input type="text" class="form-control" name="username" placeholder="Admin"></div>
+		</div>
+		<div class="form-group">
+			<label for="Password" class="control-label col-xs-2">Password</label>
+			<div class="col-xs-6"><input type="password" class="form-control" name="password" placeholder="Password"></div>
+		</div>
+			<button type="submit" class="btn btn-primary col-xs-2 col-xs-offset-2">Login</button>
+</form>
+<% } else { %>
+<div id="main-page">
+	<div class="row">
+		<div class="col-xs-12">
+			<h1>Emergency type:</h1><br>
+		</div>
+	</div>
+	<div class="row">
+		<div class="col-xs-12">
+			<button type="button" class="btn btn-primary btn-lg btn-block" id="doorstatus">Open Door</button>
+		</div>
+	</div>
+	<div class="row">
+		<div class="col-xs-12">
+			<br/>
+		</div>
+	</div>
+	<div class="row">
+		<div class="col-xs-12">
+			<button type="button" class="btn btn-warning btn-lg btn-block" id="helpbut">Help</button>
+		</div>
+	</div>
+	<div class="row">
+		<div class="col-xs-12">
+			<br/>
+		</div>
+	</div>
+	<div class="row">
+		<div class="col-xs-12">
+			<button type="button" class="btn btn-danger btn-lg btn-block"  id="emerbut">Emergency</button>
+		</div>
+	</div>
+</div>
+<div id="setting-page">
+  	<div class="row">
+		<div class="col-xs-12">
+			<h1>Settings:</h1>
+		</div>
+	</div>
+
+
+<script type="templete/text" id="wifisettings>
+	<div class="row">
+		<div class="col-xs-12">
+			<h3>Wifi:</h3>	
+		</div>
+	</div>
+	<form class="form-horizontal" action="sendwifi" method="post">
+		<div class="form-group">
+						<label for="Wifi-network" class="col-xs-2 col-xs-offset-1 control-label">Network: </label>
+					<div class="col-xs-6">
+						<select class="form-control" id="wifinames">
+
+						</select>
+					</div>
+		</div>
+		<div class="form-group">
+					<label for="Wifi-password" class="col-xs-2 col-xs-offset-1 control-label">password: </label>
+					<div class="col-xs-6"><input type="password" class="form-control" /></div>
+		</div>
+					<div class="col-xs-offset-3">
+						<button type="button" class="btn btn-primary">Save</button>
+						<button type="button" class="btn btn-primary">Refresh</button>
+					</div>
+	</form>
+	
+	</script>
+
+
+	<div class="row">
+		<div class="col-xs-9 col-xs-offset-3">
+			<h3>Bluetooth options:</h3>	
+		</div>
+	</div>
+	
+	<form class="form-horizontal" action="delbt" method="post">
+		<div class="form-group">
+					<label for="BT-friends" class="col-xs-2 col-xs-offset-1 control-label">BT-friends: </label>
+					<div class="col-xs-6">
+						<select class="form-control" id="savedbt" name="btrem">
+		
+						</select>
+					</div>
+		</div>
+		<div class="col-xs-offset-3">
+				<button type="submit" class="btn btn-primary">Delete</button>
+		</div>
+	</form>
+	
+	<br>
+	<form class="form-horizontal" action="newbt" method="post">
+		<div class="form-group">
+					<label for="BT-friends" class="col-xs-2 col-xs-offset-1 control-label">add new friend: </label>
+					<div class="col-xs-6">
+						<select class="form-control" id="btnames" name="newbt">
+
+						</select>
+					</div>
+		</div>
+		<div class="col-xs-offset-3">
+					<button type="submit" class="btn btn-primary">Add</button>
+					<button type="button" class="btn btn-primary" id="btrefresh">Refresh</button>
+		</div>
+	</form>
+	<form class="form-horizontal" action="setbt" method="post">
+		<div class="form-group">
+					<label for="BT-friends" class="col-xs-2 col-xs-offset-1 control-label">Auto open: </label>
+					<div class="col-xs-6">
+						<label class="radio-inline"><input type="radio" name="btopen" id="btopenon" value="on">On</label>
+						<label class="radio-inline"><input type="radio" name="btopen" id="btopenoff" value="off">Off</label>
+					</div>
+		</div>
+		<div class="col-xs-offset-3">
+					<button type="submit" class="btn btn-primary">Update</button>
+		</div>
+	</form>
+
+
+	<div class="row">
+		<div class="col-xs-9 col-xs-offset-3">
+			<h3>Emergency options:</h3>	
+		</div>
+	</div>
+	<form class="form-horizontal" action="delphone" method="post">
+		<div class="form-group">
+					<label for="BT-friends" class="col-xs-2 col-xs-offset-1 control-label">phone numbers: </label>
+					<div class="col-xs-6">
+						<select class="form-control" id="phonenum" name="phone">
+
+						</select>
+					</div>
+		</div>
+					<div class="col-xs-offset-3">
+						<button type="submit" class="btn btn-primary">Delete</button>
+					</div>
+	</form>
+	
+	<br>
+	<form class="form-horizontal" action="addphone" method="post">
+		<div class="form-group">
+					<label for="new-number" class="col-xs-2 col-xs-offset-1 control-label">name: </label>
+					<div class="col-xs-6">
+						<input type="text" class="form-control" placeholder="name" name="phonename" />
+					</div>
+		</div>
+		<div class="form-group">
+					<label for="new-number" class="col-xs-2 col-xs-offset-1 control-label">new number: </label>
+					<div class="col-xs-6">
+						<input type="text" class="form-control" placeholder="Phone Number" name="phone" />
+					</div>
+		</div>
+		<div class="col-xs-offset-3">
+					<button type="submit" class="btn btn-primary">Add</button>
+		</div>
+	</form>	<br>
+	<form class="form-horizontal" action="setemer" method="post">
+		<div class="form-group">
+					<label for="BT-friends" class="col-xs-2 col-xs-offset-1 control-label">call to number: </label>
+					<div class="col-xs-6">
+						<select class="form-control" id="callto" name="callto">
+
+						</select>
+					</div>
+		</div>
+		<div class="form-group">
+					<label for="BT-friends" class="col-xs-2 col-xs-offset-1 control-label">call on help: </label>
+					<div class="col-xs-6">
+						<label class="radio-inline"><input type="radio" name="callhelp" id="callhelpon" value="on">On</label>
+						<label class="radio-inline"><input type="radio" name="callhelp" id="callhelpoff" value="off">Off</label>
+					</div>
+		</div>
+		<div class="form-group">
+					<label for="BT-friends" class="col-xs-2 col-xs-offset-1 control-label">alarm on help: </label>
+					<div class="col-xs-6">
+						<label class="radio-inline"><input type="radio" name="alarmhelp" id="alarmhelpon" value="on">On</label>
+						<label class="radio-inline"><input type="radio" name="alarmhelp" id="alarmhelpoff" value="off">Off</label>
+					</div>
+		</div>
+		<div class="form-group">
+					<label for="BT-friends" class="col-xs-2 col-xs-offset-1 control-label">call on emergency: </label>
+					<div class="col-xs-6">
+						<label class="radio-inline"><input type="radio" name="callemer" id="callemeron" value="on">On</label>
+						<label class="radio-inline"><input type="radio" name="callemer" id="callemeroff" value="off">Off</label>
+					</div>
+		</div>
+		<div class="form-group">
+					<label for="BT-friends" class="col-xs-2 col-xs-offset-1 control-label">alarm on emergency: </label>
+					<div class="col-xs-6">
+						<label class="radio-inline" align="right"><input type="radio" name="alarmemer" id="alarmemeron" value="on">On</label>
+						<label class="radio-inline"><input type="radio" name="alarmemer" id="alarmemeroff" value="off">Off</label>
+					</div>
+		</div>
+		<div class="col-xs-offset-3">
+					<button type="submit" class="btn btn-primary">Update</button>
+		</div>
+	</form>	
+	<br/>
+	<div class="row">
+		<div class="col-xs-9 col-xs-offset-3">
+			<h3>notes:</h3>	
+		</div>
+	</div>
+	<div class="row">
+		<div class="alert alert-warning alert-dismissible col-xs-offset-3 col-xs-9" role="alert" id="memoslastupdate">
+  			<button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+  			<strong>Warning!</strong> you don't have the last updated notes, please refresh before updating.
+		</div>
+	</div>
+	<br/>
+	<form class="form-horizontal" action="savenotes" method="post">
+	<div id="memos">
+
+
+     </div>
+        <br>
+		<div class="col-xs-offset-3">
+					<button type="button" id="newmemo" class="btn btn-primary">new</button>
+					<button type="button" id="updatememo" class="btn btn-primary">Update</button>
+		</div>
+	</form>	<br>
+
+</div>
+<div id="help-page">
+  	<div class="row">
+		<div class="col-xs-12">
+			<h1>Help:</h1>
+		</div>
+	</div>
+
+<div class="container">
+
+    <div class="panel-group" id="accordion">
+        <div class="faqHeader">General questions</div>
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <h4 class="panel-title">
+                    <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion" href="#collapseOne">Example1</a>
+                </h4>
+            </div>
+            <div id="collapseOne" class="panel-collapse collapse in">
+                <div class="panel-body">
+                   this is some example for helping page
+                </div>
+            </div>
+        </div>
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <h4 class="panel-title">
+                    <a class="accordion-toggle collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapseTen">Example 2</a>
+                </h4>
+            </div>
+            <div id="collapseTen" class="panel-collapse collapse">
+                <div class="panel-body">
+                    this is another example 
+                </div>
+            </div>
+        </div>
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <h4 class="panel-title">
+                    <a class="accordion-toggle collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapseEleven">Example 3</a>
+                </h4>
+            </div>
+            <div id="collapseEleven" class="panel-collapse collapse">
+                <div class="panel-body">
+                   bla bla bla
+                </div>
+            </div>
+        </div>
+
+        <div class="faqHeader">more questions</div>
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <h4 class="panel-title">
+                    <a class="accordion-toggle collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapseTwo">question?</a>
+                </h4>
+            </div>
+            <div id="collapseTwo" class="panel-collapse collapse">
+                <div class="panel-body">
+                    this is some question
+                </div>
+            </div>
+        </div>
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <h4 class="panel-title">
+                    <a class="accordion-toggle collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapseThree">question 2?</a>
+                </h4>
+            </div>
+            <div id="collapseThree" class="panel-collapse collapse">
+                <div class="panel-body">
+                    list:
+                    <ul>
+                        <li>sdfsdf</li>
+                        <li>fdf</li>
+                        <li>fsdff</li>
+                        <li>sdfsdf</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<style>
+    .faqHeader {
+        font-size: 27px;
+        margin: 20px;
+    }
+
+</style>
+</div>
+
+
+<% } %>	
+	
+	
+	
+</div>
+			
+			<script src="http://code.jquery.com/jquery.js"></script>	
+ 	   		<script src="/static/js/bootstrap.js"></script>	
+ 	   		<script src="/static/js/pages.js"></script>
+ 	   		
+</body>
+</html>

@@ -1,0 +1,42 @@
+var mraa = require('mraa'); //require mraa
+var PotentiometerStatus = new mraa.Aio(0); // Potentiometer Status
+
+var config = {};
+
+config.debug = false;
+config.doorname = "Technion-door";
+config.SmokeThresh = 450;
+config.PotentionmeterLowThreshold = 710;
+config.PotentionmeterHighThreshold = 950;
+config.MotorStatusPrecisionMul = 30;
+// 1 is ClockWise, 0 is counterClockWise
+config.MotorDirectionToClose = 1;
+config.MotorDirectionToOpen = 1- config.MotorDirectionToClose;
+config.MotorThreshold = 7000;
+config.MotorSpeed = 10;
+config.MotorMaxSpeed = 10;
+
+// Enabling each service 
+config.MotionService = true;
+config.SpeechService = true;
+config.AlarmService = true;
+config.MotorService = true;
+config.KnockDetectService = true;
+config.SmokeDetectService = true;
+config.BtKeepOnlineService = true;
+config.BreakDetectService = true;
+config.DoorStatusService = true;
+config.NotificationService = true;
+config.PotentiometerReadVal = PotentiometerStatus;
+
+
+
+config.MotorStatus = function (precision) {
+	var PotentiometerRead = PotentiometerStatus.read();
+	var OpenThreshold = ( config.MotorDirectionToClose == 1 ) ? config.PotentionmeterHighThreshold : config.PotentionmeterLowThreshold;
+	var CloseThreshold = ( config.MotorDirectionToClose == 0 ) ? config.PotentionmeterHighThreshold : config.PotentionmeterLowThreshold;
+	if ( PotentiometerRead > (config.PotentionmeterHighThreshold - precision*config.MotorStatusPrecisionMul)  ) return ( config.MotorDirectionToClose == 1 ) ? "Open" : "Close";
+	else if ( PotentiometerRead < (config.PotentionmeterLowThreshold +  precision*config.MotorStatusPrecisionMul) ) return ( config.MotorDirectionToClose == 0 ) ? "Open" : "Close";
+	return "Middle";
+}
+module.exports = config;

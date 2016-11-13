@@ -1,0 +1,15 @@
+body {
+	background: lightblue;
+}
+a {
+	cursor: pointer;
+}
+#help-page {
+	display: none;
+}
+#setting-page {
+	display: none;
+}
+#main-page {
+	display: none;
+}

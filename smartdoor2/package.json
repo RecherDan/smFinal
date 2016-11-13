@@ -1,0 +1,44 @@
+{
+  "name": "smartdoor",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "start": "node app.js"
+  },
+  "dependencies": {
+    "body-parser": "*",
+    "cookie-parser": "*",
+    "ejs": "*",
+    "errorhandler": "*",
+    "express": "4.*",
+    "express-session": "*",
+    "firebase": "^3.4.1",
+    "fs": "*",
+    "method-override": "*",
+    "morgan": "*",
+    "multer": "*",
+    "node-arp": "*",
+    "passport": "*",
+    "passport-facebook": "*",
+    "passport-local": "*",
+    "path": "*",
+    "@google-cloud/speech": "^0.1.1",
+    "serialport": "*"
+  },
+  "description": "SmartDoor System",
+  "main": "app.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/RecherDan/SmartDoor.git"
+  },
+  "author": "Dan Recher, Ori Nitzan",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/RecherDan/SmartDoor/issues"
+  },
+  "homepage": "https://github.com/RecherDan/SmartDoor#readme",
+  "devDependencies": {
+    "external-ip": "^0.2.4",
+    "ip": "^1.1.3"
+  }
+}
